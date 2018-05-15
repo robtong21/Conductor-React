@@ -1,0 +1,25 @@
+#side-nav {
+  background-color: #0CABA5;
+  background-repeat: repeat-y;
+  color: white;
+  height: 100vh;
+}
+
+nav {
+  text-transform: lowercase;
+}
+
+li {
+  list-style-type: none;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+a, a:visited {
+  color: white;
+}
+
+a:hover, a:focus, a:active {
+  color: #FFCD6C;
+  text-decoration: none;
+}
