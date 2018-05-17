@@ -19,7 +19,7 @@ class App extends React.Component {
       groups: [],
       platforms: [],
       regions: [],
-      environmentURL: 'http://devplatform.rightnow.org'
+      environmentURL: 'http://devplatform.rightnow.org',
     }
   } 
   
@@ -42,7 +42,6 @@ class App extends React.Component {
 render() {
     return (
       <React.Fragment>
-        
         <Auth />
         <Sidebar 
           getHomeData={this.getHomeData} 

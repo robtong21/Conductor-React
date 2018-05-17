@@ -16,6 +16,10 @@ class PlatformDetail extends React.Component {
     }
   } 
 
+  componentDidMount() {
+    this.getPlatform()
+  }
+  
   getPlatform = (platformId) => {
     const accessToken = getAccessToken()
     const AuthStr = 'Bearer '.concat(accessToken);

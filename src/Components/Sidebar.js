@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
         <ul>
           {this.props.platforms && this.props.platforms.map(platform =>
             // console.log('platform', platform) 
-            <li key={platform.componentId}><a href="/" >{platform.componentName}</a></li>
+            <li key={platform.componentId}><a href={`/platform/detail/${platform.componentId}`}>{platform.componentName}</a></li>
           )}
         </ul>
       </div>
