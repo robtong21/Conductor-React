@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Auth from './components/Auth'
 import Sidebar from './components/Sidebar';
 import Router from './components/Router';
-import LandingPage from './components/LandingPage';
 import { getAccessToken } from './AuthService'
 import axios from 'axios'
 import './styles/css/Sidebar.css'
+import { Provider } from 'react-redux'
+import store from './store'
 
 class App extends React.Component {
   constructor(props) {
@@ -41,14 +41,16 @@ class App extends React.Component {
 
 render() {
     return (
-      <React.Fragment>
-        <Auth />
-        <Sidebar 
-          getHomeData={this.getHomeData} 
-          platforms={this.state.platforms} 
-        />
-        <Router />
-      </React.Fragment>
+      <Provider store={store}>
+        <React.Fragment>
+          <Auth />
+          <Sidebar 
+            getHomeData={this.getHomeData} 
+            platforms={this.state.platforms} 
+          />
+          <Router />
+        </React.Fragment>
+      </Provider>
     );
   }
 }

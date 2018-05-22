@@ -1,7 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-import Auth from './Auth'
-import { getAccessToken } from '../AuthService'
 import '../styles/css/Sidebar.css'
 
 class Sidebar extends React.Component {
