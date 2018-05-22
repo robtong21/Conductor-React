@@ -1,6 +1,4 @@
 import React from 'react'
-import { Router, Route, Link } from 'react-router-dom'
-import Sidebar from './Sidebar'
 
 class Auth extends React.Component {
   constructor() {
@@ -46,7 +44,7 @@ class Auth extends React.Component {
     parts = this.getHashParams(); // { "" : undefined }
     let params = JSON.stringify(parts); // "{}"
     
-    if (params != "{}") {
+    if (params !== "{}") {
       
       let accessToken = JSON.parse(params);
       localStorage.setItem("AccessToken", accessToken.access_token);
@@ -84,7 +82,7 @@ class Auth extends React.Component {
   getAccessToken() {
     if (localStorage.getItem("AccessToken") && localStorage.getItem("exp")) {
 
-      let expired = parseInt(localStorage.getItem("exp")) < (new Date().getTime() / 1000);
+      let expired = parseInt(localStorage.getItem("exp"), 0) < (new Date().getTime() / 1000);
 
       if (expired) {
         localStorage.removeItem("AccessToken")

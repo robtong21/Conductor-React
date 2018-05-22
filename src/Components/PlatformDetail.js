@@ -7,7 +7,7 @@ import '../styles/css/PlatformDetail.css'
 class PlatformDetail extends React.Component {
   constructor() {
     super()
-
+    
     this.state = {
       baseUrl: '',
       config: '',
@@ -29,8 +29,6 @@ class PlatformDetail extends React.Component {
     const self = this;
     axios.get(`${this.state.environmentURL}/administration/v1/settings/components/${platformID}`, { headers: { Authorization: AuthStr}})
       .then(res => {
-        console.log('res', res)
-        const regions = res.data.componentSettings.settingValueDetails.map()
         self.setState({
           platformName: res.data.componentName,
           settings: res.data.componentSettings,
@@ -45,7 +43,7 @@ class PlatformDetail extends React.Component {
     return (
       <div className="col-sm-9">
         <h1 >{this.state.platformName}</h1>
-
+        
         <p>no settings for you</p>
 
         <div className="form-inline setting-filters">
