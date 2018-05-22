@@ -1,0 +1,70 @@
+.settings {
+  th {
+      padding: 10px 15px;
+      background-color: #FFAF12;
+      color: white;
+      border-bottom: none;
+      text-transform: lowercase;
+  }
+
+  td {
+      padding: 10px 15px;
+  }
+}
+
+h2 {
+  text-transform: lowercase;
+  margin-top: 25px;
+
+  a {
+      color: #333;
+      &:hover, &:focus {
+          text-decoration: none;
+      }
+  }
+}
+
+h3 {
+  text-transform: lowercase;
+  margin: 20px 0;
+  a { 
+      color: #0CABA5; 
+  }
+  a:hover, a:focus {
+      text-decoration: none;
+      color: #1F50B8; 
+  }
+}
+
+.settings-panel {
+  h2 a {
+      &:hover { 
+          color: #FF7B12;
+      }
+  }
+  .panel {
+      border-color: #FF7B12;
+  }
+}
+
+.group-panel {
+  h2 a {  
+      &:hover { 
+          color: #0CABA5;
+      }
+  }
+  .panel {
+      border-color: #0CABA5;
+  }
+}
+
+.current-panel {
+  h2 a {  
+      &:hover { 
+          color: #FFAF12;
+      }
+  }
+  .panel {
+      border-color: #FFAF12;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Router, Route, Link } from 'react-router-dom'
 import Sidebar from './Sidebar'
 
 class Auth extends React.Component {
@@ -7,7 +7,7 @@ class Auth extends React.Component {
     super()
     this.oauthService = {
       loginUrl: 'https://devarbiter.rightnow.org/connect/authorize',
-      redirectUri: 'http://localhost:4200/',
+      redirectUri: 'http://localhost:4400/',
       clientId: "conductor",
       scope: "api.platform api.platform.administration",
       responseType: "token"    

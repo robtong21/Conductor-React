@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Auth from './Components/Auth'
-import Sidebar from './Components/Sidebar';
-import Router from './Components/Router';
-import LandingPage from './Components/LandingPage';
+import Auth from './components/Auth'
+import Sidebar from './components/Sidebar';
+import Router from './components/Router';
+import LandingPage from './components/LandingPage';
 import { getAccessToken } from './AuthService'
 import axios from 'axios'
 import './styles/css/Sidebar.css'
