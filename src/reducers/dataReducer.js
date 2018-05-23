@@ -2,11 +2,13 @@ function regionsReducer(state={}, action) {
   const newState = Object.assign({}, state)
 
   switch(action.type) {
-    case 'GET_REGIONS':
-      newState.regions = action.regions
-      newState.selectedRegions = action.regions.map(region => {
+    case 'GET_DATA':
+      newState.regions = action.data.regions
+      newState.selectedRegions = action.data.regions.map(region => {
         return region.regionName;
       })
+      newState.platforms = action.data.components
+      newState.settingGroups = action.data.groups
       break
     case 'CLICK_REGION':
       let index = state.selectedRegions.indexOf(action.region)
@@ -15,7 +17,6 @@ function regionsReducer(state={}, action) {
     default:
       return state
   }
-  console.log('newstate in regionsReducer', newState)
   return newState
 }
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import Auth from './components/Auth'
-import Sidebar from './components/Sidebar';
 import Router from './components/Router';
 import { getAccessToken } from './AuthService'
 import axios from 'axios'
 import './styles/css/Sidebar.css'
 import { Provider } from 'react-redux'
 import store, { env } from './store'
-import { getRegionsList, getPlatformList, getSettingGroupsList} from './action-creators/data'
+import { getData } from './action-creators/data'
+import SidebarContainer from './containers/SidebarContainer';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,10 +29,7 @@ class App extends React.Component {
     const AuthStr = 'Bearer '.concat(accessToken);
       axios.get(`${env.environmentURL}/administration/v1/settings/home`, { headers: { Authorization: AuthStr}})
       .then(res => {
-        console.log('res', res)
-        store.dispatch(getRegionsList(res.data.regions))
-        store.dispatch(getPlatformList(res.data.components))
-        store.dispatch(getSettingGroupsList(res.data.groups))
+        store.dispatch(getData(res.data))
       })
   }
 
@@ -45,7 +42,7 @@ render() {
       <Provider store={store}>
         <React.Fragment>
           <Auth />
-          <Sidebar />
+          <SidebarContainer />
           <Router />
         </React.Fragment>
       </Provider>
