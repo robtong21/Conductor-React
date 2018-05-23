@@ -32,6 +32,9 @@ class PlatformDetail extends React.Component {
     evt.target.classList.toggle("active")
     this.props.onRegionClick(regionName)
     this.props.filterOnRegionClick()
+    this.setState({
+      currentlyDisplayed: this.props.selectedComponentSettings
+    })
   } 
   
   onInputChange = (e) => {

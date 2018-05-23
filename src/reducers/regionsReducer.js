@@ -15,6 +15,7 @@ function regionsReducer(state={}, action) {
     default:
       return state
   }
+  console.log('newstate in regionsReducer', newState)
   return newState
 }
 
