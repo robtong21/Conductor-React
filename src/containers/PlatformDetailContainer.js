@@ -11,12 +11,11 @@ function mapStateToProps(state, ownProps) {
     platformId: ownProps.match.params.platformId,
     environmentURL: state.environmentURL,
     selectedRegions: state.dataReducer.selectedRegions,
-    componentSettings: state.platformReducer.componentSettings,
-    currentSettings: state.platformReducer.currentSettings,
-    settingGroups: state.platformReducer.settingGroups,
-    selectedComponentSettings: state.platformReducer.selectedComponentSettings,
-    componentName: state.platformReducer.componentName,
-
+    // settings: state.platformReducer.componentSettings,
+    currentSettings: state.settingsReducer.currentSettings,
+    settingGroups: state.settingsReducer.settingGroups,
+    // selectedSettings: state.settingsReducer.selectedComponentSettings,
+    platformName: state.settingsReducer.componentName,
   }
 }
 

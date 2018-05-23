@@ -10,10 +10,10 @@ function mapStateToProps(state, ownProps) {
     regions: state.dataReducer.regions,
     selectedRegions: state.dataReducer.selectedRegions,
     settingGroupId: ownProps.match.params.settingGroupId,
-    settingGroupName: state.settingGroupReducer.settingGroupName,
-    groupSettings: state.settingGroupReducer.groupSettings, 
-    settingGroupComponents: state.settingGroupReducer.settingGroupComponents,
-    selectedGroupSettings: state.settingGroupReducer.selectedGroupSettings
+    settingGroupName: state.settingsReducer.settingGroupName,
+    groupSettings: state.settingsReducer.groupSettings, 
+    settingGroupComponents: state.settingsReducer.settingGroupComponents,
+    selectedGroupSettings: state.settingsReducer.selectedGroupSettings
   }
 }
 

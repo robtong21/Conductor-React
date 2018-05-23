@@ -1,7 +1,7 @@
 .settings {
   th {
       padding: 10px 15px;
-      background-color: #FFAF12;
+      background-color: #FFBE14;
       color: white;
       border-bottom: none;
       text-transform: lowercase;
@@ -28,7 +28,7 @@ h3 {
   text-transform: lowercase;
   margin: 20px 0;
   a { 
-      color: #0CABA5; 
+      color: #1680B3; 
   }
   a:hover, a:focus {
       text-decoration: none;
@@ -39,33 +39,33 @@ h3 {
 .settings-panel {
   h2 a {
       &:hover { 
-          color: #FF7B12;
+          color: #FF5A14;
       }
   }
   .panel {
-      border-color: #FF7B12;
+      border-color: #FF5A14;
   }
 }
 
 .group-panel {
   h2 a {  
       &:hover { 
-          color: #0CABA5;
+          color: #1680B3;
       }
   }
   .panel {
-      border-color: #0CABA5;
+      border-color: #1680B3;
   }
 }
 
 .current-panel {
   h2 a {  
       &:hover { 
-          color: #FFAF12;
+          color: #FFBE14;
       }
   }
   .panel {
-      border-color: #FFAF12;
+      border-color: #FFBE14;
   }
 }
 
@@ -77,14 +77,32 @@ h3 {
     }
 
     .btn-default:focus {
-        background-color: white;
+        background-color: #333;
     }
     .btn-default:hover {
-        color: #FFAF12;
-        background-color: white;
+        color: #FFBE14;
+        background-color: #333;
     }
     .btn-default.active {
-        background-color: #FFAF12;
-        color: white;
+        background-color: #FFBE14;
+        color: #333;
+    }
+}
+
+/* Override colors for multi-select */
+.multi {
+    .settings th {
+        background-color: #FF5A14
+    }
+    
+    .setting-filters {
+        .btn-default:hover {
+            color: #FF5A14;
+            background-color: #333;
+        }
+        .btn-default.active {
+            background-color: #FF5A14;
+            color: #333;
+        }
     }
 }

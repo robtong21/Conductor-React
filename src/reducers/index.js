@@ -1,15 +1,13 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import dataReducer from './dataReducer'
-import platformReducer from './platformReducer'
+import settingsReducer from './settingsReducer'
 import environmentReducer from './environmentReducer'
-import settingGroupReducer from './settingGroupReducer'
 
 const rootReducer = combineReducers({ 
   dataReducer, 
-  platformReducer, 
+  settingsReducer, 
   environmentReducer,
-  settingGroupReducer,
   routing: routerReducer })
 
 export default rootReducer
