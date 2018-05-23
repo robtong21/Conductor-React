@@ -1,5 +1,8 @@
 import { createStore } from 'redux'
 import createHistory from 'history/createBrowserHistory'
+import thunk from 'redux-thunk'
+import { applyMiddleware, compose } from 'redux'
+import { routerMiddleware } from 'react-router-redux'
 // import { browserHistory } from 'react-router'
 // import { BrowserRouter } from 'react-router-dom'
 
@@ -7,13 +10,26 @@ import rootReducer from './reducers/index'
 
 export const history = createHistory()
 
-// const middleware = routerMiddleware(history)
-
-const defaultState = {
-  // regions: [],
+const env = {
+  environmentURL: 'http://devplatform.rightnow.org'
 }
 
-const store = createStore(rootReducer, defaultState)
+const enhancers = []
+const middleware = [
+  thunk.withExtraArgument(env),
+  routerMiddleware(history)
+]
+
+const composedEnhancers = compose(
+  applyMiddleware(...middleware),
+  ...enhancers
+)
+
+const defaultState = {
+  
+}
+
+const store = createStore(rootReducer, defaultState, composedEnhancers)
 
 // export const history = syncHistoryWithStore(BrowserRouter, store)
 

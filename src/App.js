@@ -3,8 +3,8 @@ import './App.css';
 import Auth from './components/Auth'
 import Sidebar from './components/Sidebar';
 import Router from './components/Router';
-import { getAccessToken } from './AuthService'
-import axios from 'axios'
+// import { getAccessToken } from './AuthService'
+// import axios from 'axios'
 import './styles/css/Sidebar.css'
 import { Provider } from 'react-redux'
 import store from './store'
@@ -23,21 +23,21 @@ class App extends React.Component {
     }
   } 
   
-  getHomeData = () => {
-    const accessToken = getAccessToken()
-    const AuthStr = 'Bearer '.concat(accessToken);
-    const self = this;
-    axios.get(`${this.state.environmentURL}/administration/v1/settings/home`, { headers: { Authorization: AuthStr}})
-    .then(res => {
-      self.setState({
-        groups: res.data.groups,
-        platforms: res.data.components,
-        regions: res.data.regions
-      })
-    }
-  )
-  .catch(err => console.log(err))
-}
+//   getHomeData = () => {
+//     const accessToken = getAccessToken()
+//     const AuthStr = 'Bearer '.concat(accessToken);
+//     const self = this;
+//     axios.get(`${this.state.environmentURL}/administration/v1/settings/home`, { headers: { Authorization: AuthStr}})
+//     .then(res => {
+//       self.setState({
+//         groups: res.data.groups,
+//         platforms: res.data.components,
+//         regions: res.data.regions
+//       })
+//     }
+//   )
+//   .catch(err => console.log(err))
+// }
 
 render() {
     return (

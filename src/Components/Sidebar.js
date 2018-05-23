@@ -4,7 +4,7 @@ import '../styles/css/Sidebar.css'
 class Sidebar extends React.Component {
 
   componentDidMount() {
-    this.props.getHomeData()
+    // this.props.getHomeData()
   }
 
 

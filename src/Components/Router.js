@@ -12,10 +12,6 @@ class Router extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            {/* <Route path="/platform/detail/:platformId" render={() => {
-              getRegions()
-              return <PlatformDetailContainer />
-            }} /> */}
             <Route path="/platform/detail/:platformId" component={PlatformDetailContainer} />
             <Route component={NotFound} />
           </Switch>

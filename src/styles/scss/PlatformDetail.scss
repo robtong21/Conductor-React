@@ -68,3 +68,23 @@ h3 {
       border-color: #FFAF12;
   }
 }
+
+.setting-filters {
+    margin: 20px 0;
+
+    .btn-group {
+        margin-right: 15px;
+    }
+
+    .btn-default:focus {
+        background-color: white;
+    }
+    .btn-default:hover {
+        color: #FFAF12;
+        background-color: white;
+    }
+    .btn-default.active {
+        background-color: #FFAF12;
+        color: white;
+    }
+}
