@@ -1,26 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/css/PlatformDetail.css'
 
-class PlatformDetail extends React.Component {
+class SettingGroupDetail extends React.Component {
   constructor() {
     super()
     
     this.state = {
       searchTerm: '',
+      currentlyDisplayed: []
     }
     
     this.onInputChange = this.onInputChange.bind(this)
   } 
   
   componentDidMount() {
-    this.props.getPlatform(this.props.platformId)
+    this.props.getSettingGroup(this.props.settingGroupId)
   }
   
   componentWillReceiveProps(nextProps) {
-    if (nextProps.componentSettings !== this.props.componentSettings) {
+    if (nextProps.groupSettings !== this.props.groupSettings) {
       this.setState({
-        currentlyDisplayed: nextProps.componentSettings
+        currentlyDisplayed: nextProps.groupSettings
       })
     }
   }
@@ -32,7 +32,7 @@ class PlatformDetail extends React.Component {
   } 
 
   filterSettings = () => {
-    let newlyDisplayed = this.props.componentSettings.filter(setting => {
+    let newlyDisplayed = this.props.groupSettings.filter(setting => {
       return this.props.selectedRegions.indexOf(setting.settingValueDetails[0].regionName) > -1 && setting.settingKey.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) > -1
     })
     this.setState({
@@ -50,7 +50,7 @@ class PlatformDetail extends React.Component {
   render() {
     return (
       <div className="col-sm-9">
-        <h1 >{this.props.platformName}</h1>
+        <h1 >{this.props.settingGroupName}</h1>
         
         <p>no settings for you</p>
 
@@ -89,51 +89,22 @@ class PlatformDetail extends React.Component {
           </tbody>
         </table>
 
-        <div className="group-panel">
-          <h2><a data-toggle="collapse" href="#group">Group Settings</a></h2>
+        <div className="component-panel">
+          <h2><a data-toggle="collapse" href="#group">Components</a></h2>
           <div id="group" className="panel-collapse collapse in">
             <div className="panel-body panel panel-default">
-              {this.props.settingGroups && this.props.settingGroups.map((groupSetting, i) => {
+              {this.props.settingGroupComponents && this.props.settingGroupComponents.map((platform, i) => {
                 return <div key={i}>
-                    <h3><Link to={`/settingGroup/detail/${groupSetting.settingGroupID}`}>{groupSetting.settingGroupName}</Link></h3>
+                    <h3><Link to={`/platform/detail/${platform.componentId}`}>{platform.componentName}</Link></h3>
                 </div>
               })}
             </div>
           </div>
         </div>
 
-        <div className="current-panel">
-          <h2><a data-toggle="collapse" href="#current">Current Settings</a></h2>
-          <div id="current" className="panel-collapse collapse in">
-            <div className="panel-body panel panel-default">
-              <table className="table settings">
-                <thead>
-                  <tr className="row">
-                      <th className="col-sm-6">Key</th>
-                      <th className="col-sm-6">Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.props.currentSettings && this.props.currentSettings.map((currentSetting,i) => {
-                    const settingKeys = Object.keys(currentSetting.settings);
-                    return settingKeys.map((settingKey, idx) => {
-                      return (
-                        <tr className="row" key={settingKey}>
-                          <td>{settingKey}</td>
-                          <td>{currentSetting.settings[settingKey]}</td>
-                        </tr>
-                      )
-                    }
-                      )
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
       </div>
     )
   }
 }
 
-export default PlatformDetail
+export default SettingGroupDetail
