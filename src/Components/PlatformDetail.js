@@ -29,7 +29,6 @@ class PlatformDetail extends React.Component {
   }
 
   onButtonClick = (regionName, evt) => {
-    console.log('button', evt.target)
     evt.target.classList.toggle("active")
     this.props.onRegionClick(regionName)
     this.props.filterOnRegionClick()
@@ -115,8 +114,6 @@ class PlatformDetail extends React.Component {
                   {this.props.currentSettings && this.props.currentSettings.map((currentSetting,i) => {
                     const settingKeys = Object.keys(currentSetting.settings);
                     return settingKeys.map((settingKey, idx) => {
-                      console.log('settingkey', settingKey)
-                      console.log('currentsetting.settings', currentSetting.settings)
                       return (
                         <tr className="row" key={settingKey}>
                           <td>{settingKey}</td>
