@@ -17,7 +17,6 @@ class PlatformDetail extends React.Component {
   
   componentDidMount() {
     this.props.getPlatform(this.props.platformId)
-    this.props.getData()
   }
   
   componentWillReceiveProps(nextProps) {
@@ -31,20 +30,23 @@ class PlatformDetail extends React.Component {
   onButtonClick = (regionName, evt) => {
     evt.target.classList.toggle("active")
     this.props.onRegionClick(regionName)
-    this.props.filterOnRegionClick()
-    this.setState({
-      currentlyDisplayed: this.props.selectedComponentSettings
-    })
+    this.filterSettings()
   } 
-  
-  onInputChange = (e) => {
+
+  filterSettings = () => {
     let newlyDisplayed = this.props.componentSettings.filter(setting => {
-      return this.props.selectedRegions.indexOf(setting.settingValueDetails[0].regionName) > -1 && setting.settingKey.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
+      return this.props.selectedRegions.indexOf(setting.settingValueDetails[0].regionName) > -1 && setting.settingKey.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) > -1
     })
     this.setState({
-      searchTerm: e.target.value,
       currentlyDisplayed: newlyDisplayed
     })
+  }
+  
+  onInputChange = (e) => {
+    this.setState({
+      searchTerm: e.target.value,
+    })
+    this.filterSettings()
   }
 
   render() {

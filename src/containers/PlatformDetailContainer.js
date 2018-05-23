@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import * as regionActionCreators from '../action-creators/region'
+import * as regionActionCreators from '../action-creators/data'
 import * as platformActionCreators from '../action-creators/platform'
 import PlatformDetail from '../components/PlatformDetail'
 

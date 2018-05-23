@@ -6,11 +6,6 @@ export const getPlatformSettings = platformData => ({
   platformData
 })
 
-export const filterPlatformSettings = (selectedRegions) => ({
-  type: 'FILTER_PLATFORM_SETTINGS',
-  selectedRegions
-})
-
 export const getPlatform = (platformId) => {
   const accessToken = getAccessToken()
   const AuthStr = 'Bearer '.concat(accessToken);
@@ -22,12 +17,5 @@ export const getPlatform = (platformId) => {
     dispatch(getPlatformSettings(res.data))
   })
   .catch(err => console.log(err))
-  }
-}
-
-export const filterOnRegionClick = () => {
-  return (dispatch, getState) => {
-    const state =  getState()
-    dispatch(filterPlatformSettings(state.regionsReducer.selectedRegions))
   }
 }

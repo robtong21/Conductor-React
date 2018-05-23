@@ -10,7 +10,7 @@ import rootReducer from './reducers/index'
 
 export const history = createHistory()
 
-const env = {
+export const env = {
   environmentURL: 'http://devplatform.rightnow.org'
 }
 

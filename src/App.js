@@ -3,11 +3,12 @@ import './App.css';
 import Auth from './components/Auth'
 import Sidebar from './components/Sidebar';
 import Router from './components/Router';
-// import { getAccessToken } from './AuthService'
-// import axios from 'axios'
+import { getAccessToken } from './AuthService'
+import axios from 'axios'
 import './styles/css/Sidebar.css'
 import { Provider } from 'react-redux'
-import store from './store'
+import store, { env } from './store'
+import { getRegionsList, getPlatformList, getSettingGroupsList} from './action-creators/data'
 
 class App extends React.Component {
   constructor(props) {
@@ -23,31 +24,28 @@ class App extends React.Component {
     }
   } 
   
-//   getHomeData = () => {
-//     const accessToken = getAccessToken()
-//     const AuthStr = 'Bearer '.concat(accessToken);
-//     const self = this;
-//     axios.get(`${this.state.environmentURL}/administration/v1/settings/home`, { headers: { Authorization: AuthStr}})
-//     .then(res => {
-//       self.setState({
-//         groups: res.data.groups,
-//         platforms: res.data.components,
-//         regions: res.data.regions
-//       })
-//     }
-//   )
-//   .catch(err => console.log(err))
-// }
+  getData = () => {
+    const accessToken = getAccessToken()
+    const AuthStr = 'Bearer '.concat(accessToken);
+      axios.get(`${env.environmentURL}/administration/v1/settings/home`, { headers: { Authorization: AuthStr}})
+      .then(res => {
+        console.log('res', res)
+        store.dispatch(getRegionsList(res.data.regions))
+        store.dispatch(getPlatformList(res.data.components))
+        store.dispatch(getSettingGroupsList(res.data.groups))
+      })
+  }
+
+  componentDidMount() {
+    this.getData()
+  }
 
 render() {
     return (
       <Provider store={store}>
         <React.Fragment>
           <Auth />
-          <Sidebar 
-            getHomeData={this.getHomeData} 
-            platforms={this.state.platforms} 
-          />
+          <Sidebar />
           <Router />
         </React.Fragment>
       </Provider>
