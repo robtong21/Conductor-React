@@ -3,6 +3,18 @@
   background-repeat: repeat-y;
   color: white;
   height: 100vh;
+  text-transform: lowercase;
+  box-shadow: 0 100vh 0 0 #1680B3;
+
+  a, a:visited {
+    color: white;
+  }
+  
+  a:hover, a:focus, a:active {
+    color: #FFCD6C;
+    text-decoration: none;
+  }
+  
 }
 
 nav {
@@ -15,11 +27,3 @@ li {
   margin: 5px 0;
 }
 
-a, a:visited {
-  color: white;
-}
-
-a:hover, a:focus, a:active {
-  color: #FFCD6C;
-  text-decoration: none;
-}

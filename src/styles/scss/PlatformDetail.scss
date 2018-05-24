@@ -77,15 +77,15 @@ h3 {
     }
 
     .btn-default:focus {
-        background-color: #333;
+        background-color: white;
     }
     .btn-default:hover {
         color: #FFBE14;
-        background-color: #333;
+        background-color: white;
     }
     .btn-default.active {
         background-color: #FFBE14;
-        color: #333;
+        color: white;
     }
 }
 
@@ -98,11 +98,11 @@ h3 {
     .setting-filters {
         .btn-default:hover {
             color: #FF5A14;
-            background-color: #333;
+            background-color: white;
         }
         .btn-default.active {
             background-color: #FF5A14;
-            color: #333;
+            color: white;
         }
     }
 }
