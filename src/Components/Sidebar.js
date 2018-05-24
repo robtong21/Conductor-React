@@ -6,6 +6,7 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div id="side-nav" className="col-sm-3">
+        <h2><a href={`/`}>Home</a></h2>
         <h2>Platforms</h2>
         <ul>
           {this.props.platforms && this.props.platforms.map(platform =>
