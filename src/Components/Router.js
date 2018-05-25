@@ -8,14 +8,14 @@ import SettingGroupContainer from '../containers/SettingGroupContainer';
 import NotFound from '../components/NotFound';
 import EnsureLoggedInContainer from '../containers/EnsureLoggedInContainer';
 
-import { isLoggedIn } from '../AuthService';
+// import { isLoggedIn } from '../AuthService';
 // import { logIn } from '../action-creators/auth'
 
 class Router extends React.Component {
   render() {
-    console.log('isloggedin', isloggedin)
-    let isLoggedIn = isLoggedIn()
-    if (isLoggedIn) {
+    // console.log('isloggedin', isloggedin)
+    // let isLoggedIn = isLoggedIn()
+    // if (isLoggedIn) {
       return (
           <BrowserRouter>
             <Switch>
@@ -30,14 +30,14 @@ class Router extends React.Component {
             </Switch>
           </BrowserRouter>
       )
-    } else {
-      return (
-        <React.Fragment>
-          <LandingPage />
-          <button className="btn btn-default" onClick={this.initAuthState} type="submit">Log In</button>
-        </React.Fragment>
-      )
-    }
+    // } else {
+    //   return (
+    //     <React.Fragment>
+    //       <LandingPage />
+    //       <button className="btn btn-default" onClick={this.initAuthState} type="submit">Log In</button>
+    //     </React.Fragment>
+    //   )
+    // }
   }
 }
 

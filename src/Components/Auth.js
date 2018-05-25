@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import LandingPage from './LandingPage';
 
 class Auth extends React.Component {
   constructor() {
@@ -82,10 +83,14 @@ class Auth extends React.Component {
   };
 
   render() {
-    const button = !this.props.isLoggedIn ? (
-      <button className="btn btn-default" onClick={this.initAuthState} type="submit">Log In</button>
-    ) : ""
-    return null
+    return (
+      <React.Fragment>
+        {!this.props.isLoggedIn ? (
+          <button className="btn btn-default" onClick={this.initAuthState} type="submit">Log In</button>
+        ) : ""}
+        <LandingPage />
+      </React.Fragment>
+    )
   }
 }
 
