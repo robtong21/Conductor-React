@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 class Auth extends React.Component {
   constructor() {
@@ -12,12 +13,11 @@ class Auth extends React.Component {
     }
 
     this.initAuthState = this.initAuthState.bind(this)
-    this.getAccessToken = this.getAccessToken.bind(this)
     this.tryLogin();
 
-    this.state = {
-      isLoggedIn: this.isLoggedIn()
-    }
+    // this.state = {
+    //   isLoggedIn: this.isLoggedIn()
+    // }
   }
 
   initAuthState() {
@@ -51,7 +51,7 @@ class Auth extends React.Component {
       
       let token = this.parseJwt(accessToken.access_token);
       localStorage.setItem("exp", token.exp)
-      
+
       // remove token from query string in url
       window.history.replaceState({},
         window.document.title,
@@ -65,11 +65,6 @@ class Auth extends React.Component {
       }
   }
 
-  isLoggedIn() {
-    let token = this.getAccessToken();
-    return token != null; 
-  }
-
   getHashParams() {
     var hash = window.location.hash.substr(1);
     return hash.split('&').reduce(function (result, item) {
@@ -79,22 +74,6 @@ class Auth extends React.Component {
     }, {});
   }
 
-  getAccessToken() {
-    if (localStorage.getItem("AccessToken") && localStorage.getItem("exp")) {
-
-      let expired = parseInt(localStorage.getItem("exp"), 0) < (new Date().getTime() / 1000);
-
-      if (expired) {
-        localStorage.removeItem("AccessToken")
-        
-      } else {
-        let accessToken = localStorage.getItem("AccessToken");
-        return accessToken;
-      }
-    } 
-
-    return null;
-  }
 
   parseJwt(token) {
     var base64Url = token.split('.')[1];
@@ -103,14 +82,10 @@ class Auth extends React.Component {
   };
 
   render() {
-    const button = !this.state.isLoggedIn ? (
+    const button = !this.props.isLoggedIn ? (
       <button className="btn btn-default" onClick={this.initAuthState} type="submit">Log In</button>
     ) : ""
-    return (
-      <React.Fragment>
-        {button}
-      </React.Fragment>
-    )
+    return null
   }
 }
 

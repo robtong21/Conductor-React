@@ -14,3 +14,8 @@ export function getAccessToken() {
 
   return null;
 }
+
+export function isLoggedIn() {
+  let token = getAccessToken();
+  return token != null; 
+}

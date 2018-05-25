@@ -7,10 +7,8 @@ export const getPlatformSettings = platformData => ({
 })
 
 export const getPlatform = (platformId) => {
-  const accessToken = getAccessToken()
-  const AuthStr = 'Bearer '.concat(accessToken);
   return (dispatch, getState, api) => {
-    axios.get(`${api.environmentURL}/administration/v1/settings/components/${platformId}`, { headers: { Authorization: AuthStr}})
+    axios.get(`${api.environmentURL}/administration/v1/settings/components/${platformId}`)
     .then(res => {
       dispatch(getPlatformSettings(res.data))
     })

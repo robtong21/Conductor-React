@@ -9,12 +9,9 @@ function mapStateToProps(state, ownProps) {
   return {
     regions: state.dataReducer.regions,
     platformId: ownProps.match.params.platformId,
-    environmentURL: state.environmentURL,
     selectedRegions: state.dataReducer.selectedRegions,
-    // settings: state.platformReducer.componentSettings,
     currentSettings: state.settingsReducer.currentSettings,
     settingGroups: state.settingsReducer.settingGroups,
-    // selectedSettings: state.settingsReducer.selectedComponentSettings,
     platformName: state.settingsReducer.componentName,
   }
 }

@@ -7,10 +7,8 @@ export const getSettingGroupSettings = settingGroupData => ({
 })
 
 export const getSettingGroup = (groupId) => {
-  const accessToken = getAccessToken()
-  const AuthStr = 'Bearer '.concat(accessToken);
   return (dispatch, getState, api) => {
-    axios.get(`${api.environmentURL}/administration/v1/settings/groups/${groupId}`, { headers: { Authorization: AuthStr}})
+    axios.get(`${api.environmentURL}/administration/v1/settings/groups/${groupId}`)
     .then(res => {
       console.log('setting group settings', res)
       dispatch(getSettingGroupSettings(res.data))

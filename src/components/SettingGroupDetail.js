@@ -1,11 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import SettingsTableContainer from '../containers/SettingsTableContainer';
+import { getAccessToken } from '../AuthService'
+import { devEnvironmentURL } from '../constants'
 
 class SettingGroupDetail extends React.Component {
     
   componentDidMount() {
     this.props.getSettingGroup(this.props.settingGroupId)
+  }
+
+  onBlur = (setting, e) => {
+    console.log('setting', setting)
+    const payload = {
+      groupSettingId: +this.props.settingGroupId,
+      setting: {
+        settingKey: setting.settingKey,
+        settingValueDetails: [
+          {
+            regionID: +setting.regionID,
+            settingValue: e.target.value
+          }
+        ]
+      }
+    }
+    axios.put(`${devEnvironmentURL}/administration/v1/settings/group/update`, payload)
+      .then(res => res.data)
   }
 
   render() {
@@ -17,7 +38,7 @@ class SettingGroupDetail extends React.Component {
 
         <h2>Settings</h2>
 
-        <SettingsTableContainer />
+        <SettingsTableContainer onSettingChange={this.onBlur} />
 
         <div className="component-panel">
           <h2><a data-toggle="collapse" href="#group">Components</a></h2>

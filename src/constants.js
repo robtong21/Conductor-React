@@ -1,0 +1,1 @@
+export const devEnvironmentURL = 'http://devplatform.rightnow.org'

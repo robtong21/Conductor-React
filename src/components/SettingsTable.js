@@ -27,7 +27,7 @@ class SettingsTable extends React.Component {
 
   filterSettings = () => {
     let newlyDisplayed = this.props.settings.filter(setting => {
-      return this.props.selectedRegions.indexOf(setting.settingValueDetails[0].regionName) > -1 && setting.settingKey.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) > -1
+      return this.props.selectedRegions.indexOf(setting.region) > -1 && setting.settingKey.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) > -1
     })
     this.setState({
       currentlyDisplayed: newlyDisplayed
@@ -41,11 +41,11 @@ class SettingsTable extends React.Component {
     this.filterSettings()
   }
 
+  
+
   render() {
     return (
       <div className="multi">
-      {this.state.currentlyDisplayed && this.state.currentlyDisplayed.length > 0 ? 
-        <div>
         <div className="form-inline setting-filters">
           <div className="btn-group" role="group" aria-label="Regions">
               {this.props.regions && this.props.regions.map(region => {
@@ -60,6 +60,8 @@ class SettingsTable extends React.Component {
           </div>
       </div>
           
+    {this.state.currentlyDisplayed && this.state.currentlyDisplayed.length > 0 ? 
+      <div>
       <table className="table settings">
         <thead>
           <tr className="row">
@@ -70,10 +72,11 @@ class SettingsTable extends React.Component {
         </thead>
         <tbody>
           {this.state.currentlyDisplayed && this.state.currentlyDisplayed.map((setting, i) => {
+            console.log('setting in settingsTable', setting)
             return <tr className="row" key={i}>
               <td className="col-xs-4">{setting.settingKey}</td>
-              <td className="col-xs-3">{setting.settingValueDetails[0].regionName}</td>
-              <td className="col-xs-5">{setting.settingValueDetails[0].settingValue}</td>
+              <td className="col-xs-3">{setting.region}</td>
+              <td className="col-xs-5"><input className="form-control" defaultValue={setting.settingValue} onBlur={(e) => this.props.onSettingChange(setting, e)} /></td>
             </tr>
           })}
         </tbody>
